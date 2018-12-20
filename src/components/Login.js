@@ -39,10 +39,7 @@ class Login extends Component {
             password: e.target.passwordInput.value
         })
     })
-    .then(() => {
-      res => res.json()
-      console.log(res)
-    })
+    .then(res => res.json())
     .then( result => {
         localStorage.setItem('token', result.token)
     })

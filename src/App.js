@@ -5,6 +5,7 @@ import ProfileCollection from './components/ProfileCollection';
 import ProfileCard from './components/ProfileCard';
 import Record from './components/Record';
 import Suggestion from './components/Suggestion';
+import {BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
 
@@ -41,12 +42,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <header >
-          <h1 className="display-1">don't die :)</h1>
-        </header>
-        < Login />
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <header >
+            <h1 className="display-1"> don't die :) </h1>
+          </header>
+          < Login />
+        </div>
+      </BrowserRouter>
     );
   }
 }
