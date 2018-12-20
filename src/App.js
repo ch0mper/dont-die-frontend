@@ -46,10 +46,7 @@ class App extends Component {
         <header className="App-header">
           <h1>don't die :)</h1>
           < Login />
-          < ProfileCollection />
-          < ProfileCard />
-          < Record />
-          < Suggestion />
+
         </header>
       </div>
     );
