@@ -28,20 +28,24 @@ class Login extends Component {
 
   login = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/api/v1/auth/',{
+    fetch('http://localhost:5000/api/signin/',{
         method:'POST',
         headers:{
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            Accept: 'application/json'
         },
         body:JSON.stringify({
             email: e.target.emailInput.value,
             password: e.target.passwordInput.value
         })
     })
-        .then(res => res.json())
-        .then( result => {
-            localStorage.setItem('token', result.token)
-        })
+    .then(() => {
+      res => res.json()
+      console.log(res)
+    })
+    .then( result => {
+        localStorage.setItem('token', result.token)
+    })
   }
 
 }

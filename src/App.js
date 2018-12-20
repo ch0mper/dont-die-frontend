@@ -42,11 +42,10 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <header className="display-1">
-          <h1>don't die :)</h1>
-          < Login />
-
+        <header >
+          <h1 className="display-1">don't die :)</h1>
         </header>
+        < Login />
       </div>
     );
   }
