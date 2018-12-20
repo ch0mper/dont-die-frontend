@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import Login from './components/Login';
 import ProfileCollection from './components/ProfileCollection';
 import ProfileCard from './components/ProfileCard';
@@ -42,8 +41,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="container">
+        <header className="display-1">
           <h1>don't die :)</h1>
           < Login />
 
