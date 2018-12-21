@@ -4,7 +4,7 @@ class Navburger extends Component {
   render() {
     return(
       <div>
-        anvburger
+        navburger
       </div>
     )
   }

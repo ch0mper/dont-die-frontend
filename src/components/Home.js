@@ -23,11 +23,16 @@ class Home extends Component {
     .then(profiles => this.setState({profiles}))
   }
 
+  logout = () => {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div>
         < Navburger />
         < ProfileCollection />
+        <button onClick={this.logout}>log out</button>
       </div>
     )
   }
