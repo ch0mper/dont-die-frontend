@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 class Login extends Component {
 
-  // fetch(api/user/auth or /api/user/login), {
-  //   method: "POST",
-  //   body:JSON.stringify( userfield.value, pwfield.value )
-  // }
-
   render() {
     return(
       <div>

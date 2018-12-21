@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProfileCard from './components/ProfileCard';
 
 class ProfileCollection extends Component {
 
@@ -20,6 +21,7 @@ class ProfileCollection extends Component {
     return(
       <div>
         profilecollection hi
+        {/* map thru profiles to render <ProfileCard /> */}
       </div>
     )
   }

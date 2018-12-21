@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Login from './components/Login';
-import ProfileCollection from './components/ProfileCollection';
-import ProfileCard from './components/ProfileCard';
-import Record from './components/Record';
-import Suggestion from './components/Suggestion';
+import Home from './components/Home';
 import {BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
 
   state = {
     users: [],
-    profiles: [],
     vaccines: []
   }
 
@@ -19,13 +15,6 @@ class App extends Component {
     fetch('http://localhost:5000/api/users')
     .then(resp => resp.json())
     .then(users => this.setState({users}))
-  }
-
-
-  fetchProfiles = () => {
-    fetch('http://localhost:5000/api/profiles')
-    .then(resp => resp.json())
-    .then(profiles => this.setState({profiles}))
   }
 
   fetchVaccines = () => {
@@ -36,7 +25,6 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchUsers()
-    this.fetchProfiles()
     this.fetchVaccines()
   }
 
@@ -44,10 +32,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <header >
-            <h1 className="display-1"> don't die :) </h1>
-          </header>
-          < Login />
+          <h1 className="display-1"> don't die :) </h1>
+            {localStorage.token ?
+              < Home />
+              : < Login />
+            }
         </div>
       </BrowserRouter>
     );
