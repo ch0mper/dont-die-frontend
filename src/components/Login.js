@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Signup, { Component } from './components/Signup';
 
 class Login extends Component {
 
@@ -6,7 +7,7 @@ class Login extends Component {
     return(
       <div>
         <form onSubmit={this.login}>
-            <h2>Login</h2>
+            <h2>Welcome (Login or Signup)</h2>
             <div className="form-group">
                 <label>Email </label>
                 <input name="emailInput" className="form-control" type="text" />
@@ -23,7 +24,7 @@ class Login extends Component {
 
   login = (e) => {
     e.preventDefault()
-    fetch('http://localhost:5000/api/signin/',{
+    fetch('http://localhost:5000/api/users/signin/',{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
@@ -39,6 +40,11 @@ class Login extends Component {
         localStorage.setItem('token', result.token)
     })
   }
+
+  // if email doesn't exist then POST to http://localhost:5000/api/users/signup/
+  // then render < Signup /> which prompts user to fill out profile and record
+
+  // use browser router
 
 }
 
