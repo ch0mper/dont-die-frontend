@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProfileCollection from './components/ProfileCollection';
-import Navburger from './components/Navburger';
+import ProfileCollection from './ProfileCollection';
+import Navburger from './Navburger';
 
 class Home extends Component {
   state = {
@@ -8,13 +8,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.fetchProfiles()
+    //this.fetchProfiles()
   }
 
   fetchProfiles = () => {
     // fetch('http://localhost:5000/api/profiles')
     // this route doesn't exist yet
-    fetch('http://localhost:5000/api/users/:id/profiles, {
+    fetch('http://localhost:5000/api/users/:id/profiles', {
       headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }

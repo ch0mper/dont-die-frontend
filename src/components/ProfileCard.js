@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Record from './components/Record';
-import Suggestion from './components/Suggestion';
+import Record from './Record';
+import Suggestion from './Suggestion';
 
 class ProfileCard extends Component {
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProfileCard from './components/ProfileCard';
+import ProfileCard from './ProfileCard';
 
 class ProfileCollection extends Component {
 
