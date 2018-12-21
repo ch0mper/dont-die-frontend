@@ -14,7 +14,7 @@ class Home extends Component {
   fetchProfiles = () => {
     // fetch('http://localhost:5000/api/profiles')
     // this route doesn't exist yet
-    fetch('http://localhost:5000/api/user/:id/profiles, {
+    fetch('http://localhost:5000/api/users/:id/profiles, {
       headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
