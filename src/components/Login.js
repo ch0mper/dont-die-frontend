@@ -38,6 +38,7 @@ class Login extends Component {
     .then(res => res.json())
     .then( result => {
         localStorage.setItem('token', result.token)
+        localStorage.setItem('id', result.id)
     })
   }
 
