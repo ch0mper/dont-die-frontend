@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Login from './components/Login';
 import Home from './components/Home';
-//import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
 
@@ -25,20 +25,20 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchUsers()
-    this.fetchVaccines()
+    //this.fetchVaccines()
   }
 
   render() {
     return (
+      <BrowserRouter>
         <div className="container">
-        ADD LATER: Browser Router
           <h1 className="display-1"> don't die :) </h1>
             {localStorage.token ?
               < Home />
               : < Login />
             }
-        ADD LATER: Browser Router
         </div>
+      </BrowserRouter>
     );
   }
 }
