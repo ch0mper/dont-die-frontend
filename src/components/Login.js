@@ -6,7 +6,7 @@ class Login extends Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={this.props.login}>
             <h2>Welcome (Login or Signup)</h2>
             <div className="form-group">
                 <label>Email </label>
@@ -22,25 +22,7 @@ class Login extends Component {
     )
   }
 
-  login = (e) => {
-    e.preventDefault()
-    fetch('http://localhost:5000/api/users/signin/',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/json',
-            Accept: 'application/json'
-        },
-        body:JSON.stringify({
-            email: e.target.emailInput.value,
-            password: e.target.passwordInput.value
-        })
-    })
-    .then(res => res.json())
-    .then( result => {
-        localStorage.setItem('token', result.token)
-        localStorage.setItem('id', result.id)
-    })
-  }
+
 
   // if email doesn't exist then POST to http://localhost:5000/api/users/signup/
   // then render < Signup /> which prompts user to fill out profile and record

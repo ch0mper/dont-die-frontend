@@ -6,7 +6,8 @@ class ProfileCard extends Component {
   render() {
     return(
       <div>
-        profilecard hi will render record and suggestion compoments
+        {this.props.profile.firstName}
+        (TODO: show record and suggestion compoments)
       </div>
     )
   }
