@@ -7,20 +7,22 @@ class Home extends Component {
     profiles: []
   }
 
+  // this.props.userId exists
+
   componentDidMount() {
-    //this.fetchProfiles()
+    this.fetchProfiles()
+    console.log(localStorage, this.props.userId)
   }
 
   fetchProfiles = () => {
-    // fetch('http://localhost:5000/api/profiles')
-    // this route doesn't exist yet
-    fetch('http://localhost:5000/api/users/:id/profiles', {
+    fetch(`http://localhost:5000/api/users/${this.props.userId}/profiles`, {
       headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(resp => resp.json())
     .then(profiles => this.setState({profiles}))
+    // WORKS this is fetching an array of currennt user's profiles
   }
 
   logout = () => {
@@ -31,7 +33,7 @@ class Home extends Component {
     return (
       <div>
         < Navburger />
-        < ProfileCollection />
+        < ProfileCollection profiles={this.state.profiles} />
         <button onClick={this.logout}>log out</button>
       </div>
     )
