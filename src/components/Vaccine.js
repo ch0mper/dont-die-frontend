@@ -26,10 +26,10 @@ class Vaccine extends Component {
     return(
       <CardContent>
         <Typography variant='h6'>
-          {this.state.vaccine.name}
+          protected from: {this.state.vaccine.name}
         </Typography>
         <Typography variant='caption'>
-          {this.state.vaccine.disease_description}
+          what it does: {this.state.vaccine.disease_description}
         </Typography>
       </CardContent>
     )

@@ -27,7 +27,7 @@ class Record extends Component {
     return(
       <CardContent>
         <Typography variant='h5'>
-          {`-- <Record /> --`}
+          Records
         </Typography>
         <Typography>
           {this.state.records.map( record => (
