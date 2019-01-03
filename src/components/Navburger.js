@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Menu from '@material-ui/core/Menu';
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
-class Navburger extends Component {
-  render() {
+const Navburger = () => {
     return(
-      <div>
-        navburger menu will go here once we figure out how
-      </div>
+        <div>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="title" color="inherit">
+                -- TODO: will become Navburger -- 🍔
+                {/* https://material-ui.com/demos/menus/#simple-menu */}
+                </Typography>
+            </Toolbar>
+        </AppBar>
+        </div>
     )
-  }
 }
-
 export default Navburger;

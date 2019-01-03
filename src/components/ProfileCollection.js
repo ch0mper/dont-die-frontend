@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
 import ProfileCard from './ProfileCard';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 
 class ProfileCollection extends Component {
-
-  // componentDidMount(){
-  //  fetch(`http://localhost:5000/api/profiles`, {
-  //      headers: {
-  //          Authorization: `Bearer ${localStorage.getItem('token')}`
-  //      }
-  //  })
-  //      .then( res=> res.json())
-  //      .then( user => {
-  //          if(!user.error) this.setState( { user } )
-  //          else this.setState( { errorMessage: user.error } )
-  //      })
-  //  }
-
 
   render() {
     return(
       <div>
-        { this.props.profiles.map( profile => (
-          <ProfileCard profile={profile} />
-        ))}
+        <Grid container spacing={24} style={{padding: 24}}>
+          { this.props.profiles.map( profile => (
+            <Grid item xs={12} sm={6} lg={4} xl={3}>
+              <Card style={{padding: 12}}>
+                <ProfileCard profile={profile} userId={this.props.userId} />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </div>
     )
   }
