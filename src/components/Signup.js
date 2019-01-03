@@ -10,7 +10,7 @@ class Signup extends Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.props.createProfile} style={{padding: 8}} >
+        <form onSubmit={e => this.props.createProfile(e)} style={{padding: 8}} >
             <div className="form-group">
                 <label>First Name </label>
                 <input name="firstName" className="form-control" type="text" />
