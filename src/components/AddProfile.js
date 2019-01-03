@@ -12,20 +12,31 @@ class AddProfile extends Component {
       <div>
         <form onSubmit={e => this.props.createProfile(e)} style={{padding: 8}} >
             <div className="form-group">
-                <label>First Name </label>
+                <label>First Name: </label>
                 <input name="firstName" className="form-control" type="text" />
             </div>
             <div className="form-group">
-                <label>Last Name </label>
+                <label>Last Name: </label>
                 <input name="lastName" className="form-control" type="text" />
             </div>
             <div className="form-group">
-                <label>Birthdate </label>
+                <label>Birthdate: </label>
                 <input name="birthdate" className="form-control" type="date" />
             </div>
             <div className="form-group">
-                <label>Gender </label>
-                <input name="gender" className="form-control" type="text" />
+                <label>Gender:</label>
+                <div className="form-group form-inline">
+                  <input name="gender" id="gender1" value="female" className="form-control" type="radio" />
+                  <label for="gender1">Female</label>
+                </div>
+                <div className="form-group form-inline">
+                  <input name="gender" id="gender2" value="male" className="form-control" type="radio" />
+                  <label for="gender2">Male</label>
+                </div>
+                <div className="form-group form-inline">
+                  <input name="gender" id="gender3" value="other" className="form-control" type="radio" />
+                  <label for="gender3">Other</label>
+                </div>
             </div>
             <Button type="submit" variant="contained">add profile</Button>
         </form>
