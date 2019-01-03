@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Typography from '@material-ui/core/Typography';
 import Login from './components/Login';
 import Home from './components/Home';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+// import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
 
   state = {
-    // users: [],
-    // vaccines: [],
     currentUserId: localStorage.id
-  }
-
-  fetchUsers = () => {
-    fetch('http://localhost:5000/api/users')
-    .then(resp => resp.json())
-    .then(users => this.setState({users}))
-  }
-
-  fetchVaccines = () => {
-    fetch('http://localhost:5000/api/vaccines')
-    .then(resp => resp.json())
-    .then(vaccines => this.setState({vaccines}))
-  }
-
-  componentDidMount() {
-    this.fetchUsers()
-    //this.fetchVaccines()
   }
 
   login = (e) => {
@@ -42,7 +23,7 @@ class App extends Component {
             password: e.target.passwordInput.value
         })
     })
-    .then(res => res.json())
+    .then( res => res.json() )
     .then( result => {
         localStorage.setItem('token', result.token)
         localStorage.setItem('id', result.id)
@@ -50,17 +31,23 @@ class App extends Component {
     })
   }
 
+  logout = () => {
+    localStorage.clear();
+    this.setState({currentUserId: null})
+  }
+
   render() {
     return (
-      <BrowserRouter>
-        <div className="container">
-          <h1 className="display-1"> don't die :) </h1>
-            {localStorage.token ?
-              < Home userId={this.state.currentUserId} />
-              : < Login login={this.login}/>
-            }
-        </div>
-      </BrowserRouter>
+      <div className="container">
+        <Typography component="title" variant="h3">
+          don't die :)
+        </Typography>
+
+        {localStorage.token ?
+          < Home userId={this.state.currentUserId} logout={this.logout} />
+          : < Login login={this.login}/>
+        }
+      </div>
     );
   }
 }

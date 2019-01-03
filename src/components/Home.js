@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import ProfileCollection from './ProfileCollection';
 import Navburger from './Navburger';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 class Home extends Component {
   state = {
     profiles: []
   }
 
-  // this.props.userId exists
-
   componentDidMount() {
     this.fetchProfiles()
-    console.log(localStorage, this.props.userId)
   }
 
   fetchProfiles = () => {
@@ -25,17 +24,13 @@ class Home extends Component {
     // WORKS this is fetching an array of currennt user's profiles
   }
 
-  logout = () => {
-    localStorage.clear();
-  }
-
   render() {
     return (
-      <div>
+      <Paper style={{padding: 12}}>
         < Navburger />
-        < ProfileCollection profiles={this.state.profiles} />
-        <button onClick={this.logout}>log out</button>
-      </div>
+        < ProfileCollection profiles={this.state.profiles} userId={this.props.userId}/>
+        <Button onClick={this.props.logout} variant="contained">log out [move to 🍔]</Button>
+      </Paper>
     )
   }
 }
