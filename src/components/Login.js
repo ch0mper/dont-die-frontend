@@ -37,7 +37,6 @@ class Login extends Component {
                   <input name="passwordInput" className="form-control" type="password" />
               </div>
               <Button type="submit" variant="contained">sign up</Button>
-              TODO: set up POST to http://localhost:5000/api/users/signup/
           </form>
         </Paper>
       </main>
