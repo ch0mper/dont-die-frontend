@@ -4,7 +4,7 @@ class Suggestion extends Component {
   render() {
     return(
       <div>
-        suggestion hi
+        Upcoming vaccines and boosters!
       </div>
     )
   }
