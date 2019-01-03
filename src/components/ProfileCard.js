@@ -25,7 +25,7 @@ class ProfileCard extends Component {
           {this.props.profile.firstName} {this.props.profile.lastName}
         </Typography>
         <Typography variant="h6">
-          alert: get your shot soon!
+          alert: get your shot soon! {'<Suggestion/>'}
         </Typography>
       </CardContent>
       <CardActions>
