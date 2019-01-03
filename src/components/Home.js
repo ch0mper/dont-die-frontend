@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ProfileCollection from './ProfileCollection';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Navburger from './Navburger';
-import Signup from './Signup';
+import AddProfile from './AddProfile';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
@@ -58,7 +58,7 @@ class Home extends Component {
         < Navburger />
         {this.state.profiles.length ?
           < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
-          : < Signup createProfile={this.createProfile} />
+          : < AddProfile createProfile={this.createProfile} />
         }
         <Button onClick={this.props.logout} variant="contained">log out [move to 🍔]</Button>
       </Paper>
