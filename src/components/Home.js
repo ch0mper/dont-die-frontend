@@ -15,6 +15,10 @@ class Home extends Component {
     this.fetchProfiles()
   }
 
+  componentDidUpdate() {
+    this.fetchProfiles()
+  }
+
   fetchProfiles = () => {
     fetch(`http://localhost:5000/api/users/${this.props.userId}/profiles`, {
       headers: {

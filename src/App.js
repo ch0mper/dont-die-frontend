@@ -51,6 +51,7 @@ class App extends Component {
     })
     .then( res => res.json() )
     .then( result => {
+      console.log(result)
         localStorage.setItem('token', result.token)
         localStorage.setItem('id', result.id)
         this.setState({currentUserId: result.id})
