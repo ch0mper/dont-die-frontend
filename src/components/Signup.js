@@ -7,8 +7,6 @@ import Button from '@material-ui/core/Button';
 
 class Signup extends Component {
 
-  // pass createProfile as props from Home.js, which creates a Profile
-
   render() {
     return(
       <div>

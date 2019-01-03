@@ -26,13 +26,24 @@ class Home extends Component {
     // WORKS this is fetching an array of currennt user's profiles
   }
 
+  createProfile = () => {
+    // fetch(`http://localhost:5000/api/profiles/`, {
+    //   method:'POST',
+    //   headers: {
+    //       Authorization: `Bearer ${localStorage.getItem('token')}`
+    //   }
+    // })
+    // .then(resp => resp.json())
+    // .then(profiles => this.setState({profiles}))
+  }
+
   render() {
     return (
       <Paper style={{padding: 12}}>
         < Navburger />
         {this.state.profiles.length ?
           < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
-          : < Signup />
+          : < Signup createProfile={this.createProfile} />
         }
         <Button onClick={this.props.logout} variant="contained">log out [move to 🍔]</Button>
       </Paper>
