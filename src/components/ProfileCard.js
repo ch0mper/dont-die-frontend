@@ -24,9 +24,7 @@ class ProfileCard extends Component {
         <Typography variant="h5" align="center">
           {this.props.profile.firstName} {this.props.profile.lastName}
         </Typography>
-        <Typography variant="h6">
-          alert: get your shot soon! {'<Suggestion/>'}
-        </Typography>
+        <Suggestion profile={this.props.profile} />
       </CardContent>
       <CardActions>
         <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
