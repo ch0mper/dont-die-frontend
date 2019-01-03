@@ -12,7 +12,6 @@ class ProfileCard extends Component {
     showRecords: false,
     viewButton: true,
     records: [], // done
-    vaccineIds: [], // done
     vaccines: [] // done
   }
 
@@ -33,16 +32,11 @@ class ProfileCard extends Component {
     })
     .then(resp => resp.json())
     .then(records => this.setState({records}))
-    .then(this.fetchVaccineIds)
-  }
-
-  fetchVaccineIds = () => {
-    let fetchedVaccineIds = this.state.records.map( record => record.vaccineId )
-    this.setState({vaccineIds: fetchedVaccineIds})
   }
 
   fetchVaccines = () => {
-    let vaccines = this.state.vaccineIds.map( vaccineId => {
+    let vaccineIds = this.state.records.map( record => record.vaccineId )
+    let vaccines = vaccineIds.map( vaccineId => {
       fetch(`http://localhost:5000/api/vaccines/${vaccineId}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -55,7 +49,6 @@ class ProfileCard extends Component {
       }))
     })
   }
-
 
   render() {
     return(
