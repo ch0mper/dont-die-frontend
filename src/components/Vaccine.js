@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 
 class Vaccine extends Component {
 
@@ -24,14 +26,22 @@ class Vaccine extends Component {
 
   render() {
     return(
+      <div>
       <CardContent>
         <Typography variant='h6'>
-          protected from: {this.state.vaccine.name}
+          {this.state.vaccine.name}
         </Typography>
         <Typography variant='caption'>
-          what it does: {this.state.vaccine.disease_description}
+          {this.state.vaccine.disease_description}
         </Typography>
       </CardContent>
+
+      <CardActions>
+        <Button onClick={this.props.deleteVaccine} size="small" variant="contained">
+          Delete
+        </Button>
+      </CardActions>
+      </div>
     )
   }
 }
