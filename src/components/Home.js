@@ -15,10 +15,6 @@ class Home extends Component {
     this.fetchProfiles()
   }
 
-  componentDidUpdate() {
-    this.fetchProfiles()
-  }
-
   fetchProfiles = () => {
     fetch(`http://localhost:5000/api/users/${this.props.userId}/profiles`, {
       headers: {
@@ -31,7 +27,6 @@ class Home extends Component {
   }
 
   createProfile = (e) => {
-    console.log('balls')
     e.preventDefault()
     fetch(`http://localhost:5000/api/profiles/`, {
       method:'POST',
@@ -49,7 +44,9 @@ class Home extends Component {
       })
     })
     .then( res => res.json() )
-    .then( resp => console.log(resp) )
+    .then(profile => this.setState({
+      profiles: [...this.state.profiles, profile]
+    }))
   }
 
   render() {

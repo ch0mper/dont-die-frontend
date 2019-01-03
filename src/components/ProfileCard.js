@@ -10,12 +10,52 @@ class ProfileCard extends Component {
 
   state = {
     showRecords: false,
-    viewButton: true
+    viewButton: true,
+    records: [], // done
+    vaccineIds: [], // done
+    vaccines: [] // done
   }
 
   showRecords = () => {
     this.setState({showRecords: !this.state.showRecords, viewButton: !this.state.viewButton})
   }
+
+  componentDidMount() {
+    this.fetchRecords()
+    .then(this.fetchVaccines)
+  }
+
+  fetchRecords = () => {
+    return fetch(`http://localhost:5000/api/profiles/${this.props.profile._id}/records/`, {
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(records => this.setState({records}))
+    .then(this.fetchVaccineIds)
+  }
+
+  fetchVaccineIds = () => {
+    let fetchedVaccineIds = this.state.records.map( record => record.vaccineId )
+    this.setState({vaccineIds: fetchedVaccineIds})
+  }
+
+  fetchVaccines = () => {
+    let vaccines = this.state.vaccineIds.map( vaccineId => {
+      fetch(`http://localhost:5000/api/vaccines/${vaccineId}/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      .then(resp => resp.json())
+      // append the vaccine onto this.state.vaccines
+      .then(vaccine => this.setState({
+        vaccines: [...this.state.vaccines, vaccine]
+      }))
+    })
+  }
+
 
   render() {
     return(
@@ -24,7 +64,7 @@ class ProfileCard extends Component {
         <Typography variant="h5" align="center">
           {this.props.profile.firstName} {this.props.profile.lastName}
         </Typography>
-        <Suggestion profile={this.props.profile} />
+        <Suggestion vaccines={this.state.vaccines} />
       </CardContent>
       <CardActions>
         <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
@@ -35,7 +75,7 @@ class ProfileCard extends Component {
         </Button>
       </CardActions>
         { this.state.showRecords ?
-          <Record profileId={this.props.profile._id} />
+          <Record profileId={this.props.profile._id} records={this.state.records} vaccines={this.state.vaccines}/>
           : null
         }
       </div>
