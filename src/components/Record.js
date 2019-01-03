@@ -1,47 +1,43 @@
 import React, { Component } from 'react';
+import Vaccine from './Vaccine';
 import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
 
 class Record extends Component {
 
   state = {
-    vaccines: []
+    records: []
   }
 
   componentDidMount() {
-    //this.fetchVaccines()
-    console.log('userId: ', this.props.userId, 'profileId: ', this.props.profileId)
+    this.fetchRecords()
   }
 
-  // getVaccines = () => {
-  //   this.props.vaccIdsArray.map( vaccId => (
-  //     this.fetchVaccines(vaccId)
-  //   ))
-  // }
-
-  fetchVaccines = () => {
-    fetch(`http://localhost:5000/api/profiles/${this.props.profileId}/vaccines/`, {
+  fetchRecords = () => {
+    fetch(`http://localhost:5000/api/profiles/${this.props.profileId}/records/`, {
       headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
     .then(resp => resp.json())
-    .then(vaccines => this.setState({vaccines}))
-    .then( () => console.log('vaccines', this.state.vaccines))
+    .then(records => this.setState({records}))
   }
 
   render() {
     return(
-      <div>
+      <CardContent>
         <Typography variant='h5'>
-          {`<Record />`}
+          {`-- <Record /> --`}
         </Typography>
         <Typography>
-          {/* this.state.vaccines.map(names and details) */}
+          {this.state.records.map( record => (
+            <Vaccine vaccineId={record.vaccineId} key={record._id} />
+          ))}
         </Typography>
         <Typography>
-          (+ vaccine) (- vaccine) buttons
+          [+ vaccine] [- vaccine] buttons
         </Typography>
-      </div>
+      </CardContent>
     )
   }
 }

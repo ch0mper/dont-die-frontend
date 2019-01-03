@@ -8,14 +8,14 @@ import Typography from '@material-ui/core/Typography';
 
 class ProfileCard extends Component {
 
-  // < Record profileId={this.props.profile._id} userId={this.props.userId} vaccIdsArray={this.props.profile.vaccinesId}/>
-
   render() {
     return(
       <div>
       <CardContent>
         <Typography variant="h5" align="center">
-          {this.props.profile.firstName} {this.props.profile.lastName} <br />
+          {this.props.profile.firstName} {this.props.profile.lastName}
+        </Typography>
+        <Typography variant="h6">
           alert: get your shot soon!
         </Typography>
         <Typography>
@@ -30,8 +30,9 @@ class ProfileCard extends Component {
           Edit
         </Button>
       </CardActions>
+        ----------<br />----------<br />
         TODO in ProfileCard.js: show/hide {`<Record />`} for VIEW onClick
-        <Record />
+        <Record profileId={this.props.profile._id} />
       </div>
     )
   }
