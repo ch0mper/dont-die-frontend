@@ -15,7 +15,6 @@ class ProfileCard extends Component {
 
   showRecords = () => {
     this.setState({showRecords: !this.state.showRecords, viewButton: !this.state.viewButton})
-    console.log('show records clicked')
   }
 
   render() {
@@ -28,16 +27,13 @@ class ProfileCard extends Component {
         <Typography variant="h6">
           alert: get your shot soon!
         </Typography>
-        <Typography>
-          TODO: below buttons don't work yet
-        </Typography>
       </CardContent>
       <CardActions>
         <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
           {this.state.viewButton ? 'View' : 'Hide'}
         </Button>
         <Button size="small" color="primary" variant="contained">
-          Edit
+          TODO: Edit (profile)
         </Button>
       </CardActions>
         { this.state.showRecords ?

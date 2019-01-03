@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 
 // show form for creating profile and add records
 
-class Signup extends Component {
+class AddProfile extends Component {
 
   render() {
     return(
@@ -34,4 +34,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default AddProfile;
