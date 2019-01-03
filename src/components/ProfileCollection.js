@@ -12,7 +12,7 @@ class ProfileCollection extends Component {
           { this.props.profiles.map( profile => (
             <Grid item xs={12} sm={6} lg={4} xl={3}>
               <Card style={{padding: 12}}>
-                <ProfileCard profile={profile} userId={this.props.userId} />
+                <ProfileCard profile={profile} key={profile._id} userId={this.props.userId} />
               </Card>
             </Grid>
           ))}
