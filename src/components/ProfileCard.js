@@ -8,6 +8,16 @@ import Typography from '@material-ui/core/Typography';
 
 class ProfileCard extends Component {
 
+  state = {
+    showRecords: false,
+    viewButton: true
+  }
+
+  showRecords = () => {
+    this.setState({showRecords: !this.state.showRecords, viewButton: !this.state.viewButton})
+    console.log('show records clicked')
+  }
+
   render() {
     return(
       <div>
@@ -23,16 +33,17 @@ class ProfileCard extends Component {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" variant="contained">
-          View
+        <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
+          {this.state.viewButton ? 'View' : 'Hide'}
         </Button>
         <Button size="small" color="primary" variant="contained">
           Edit
         </Button>
       </CardActions>
-        ----------<br />----------<br />
-        TODO in ProfileCard.js: show/hide {`<Record />`} for VIEW onClick
-        <Record profileId={this.props.profile._id} />
+        { this.state.showRecords ?
+          <Record profileId={this.props.profile._id} />
+          : null
+        }
       </div>
     )
   }
