@@ -8,24 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 
 class Record extends Component {
 
-  state = {
-    records: []
-  }
-
-  componentDidMount() {
-    this.fetchRecords()
-  }
-
-  fetchRecords = () => {
-    fetch(`http://localhost:5000/api/profiles/${this.props.profileId}/records/`, {
-      headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-    .then(resp => resp.json())
-    .then(records => this.setState({records}))
-  }
-
   addVaccine = () => {
     // post to /records
     console.log('add vaccine clicked')
@@ -44,9 +26,9 @@ class Record extends Component {
             Vaccines
           </Typography>
 
-          {this.state.records.map( record => (
+          {this.props.vaccines.map( vaccine => (
             <Card style={{padding: 12, margin: 10}}>
-              <Vaccine vaccineId={record.vaccineId} key={record._id} deleteVaccine={this.deleteVaccine} />
+              <Vaccine vaccine={vaccine} deleteVaccine={this.deleteVaccine} />
             </Card>
           ))}
         </CardContent>
