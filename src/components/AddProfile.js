@@ -27,15 +27,15 @@ class AddProfile extends Component {
                 <label>Gender:</label>
                 <div className="form-group form-inline">
                   <input name="gender" id="gender1" value="female" className="form-control" type="radio" />
-                  <label for="gender1">Female</label>
+                  <label style={{padding: 10}} for="gender1">Female</label>
                 </div>
                 <div className="form-group form-inline">
                   <input name="gender" id="gender2" value="male" className="form-control" type="radio" />
-                  <label for="gender2">Male</label>
+                  <label style={{padding: 10}} for="gender2">Male</label>
                 </div>
                 <div className="form-group form-inline">
                   <input name="gender" id="gender3" value="other" className="form-control" type="radio" />
-                  <label for="gender3">Other</label>
+                  <label style={{padding: 10}} for="gender3">Other</label>
                 </div>
             </div>
             <Button type="submit" variant="contained">add profile</Button>
