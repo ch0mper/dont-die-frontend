@@ -17,10 +17,14 @@ class Suggestion extends Component {
 
   nextVaccine = () => {
     let neededVaccines = this.neededVaccines()
-    let nextVaccine = neededVaccines.map(vaccine => {
-      return <li>{vaccine.name}</li>
-    })
-    return <li>{nextVaccine[0]}</li>
+    if(neededVaccines.length){
+      let nextVaccine = neededVaccines.map(vaccine => {
+        return <li>{vaccine.name}</li>
+      })
+      return <li>{nextVaccine[0]}</li>
+    } else {
+      return <h3><marquee>You're all up to date!</marquee></h3>
+    }
   }
 
   render() {
