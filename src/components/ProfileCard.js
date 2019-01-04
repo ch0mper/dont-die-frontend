@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+
 
 class ProfileCard extends Component {
 
@@ -76,7 +78,9 @@ class ProfileCard extends Component {
         <Typography variant="h5" align="center">
           {this.props.profile.firstName} {this.props.profile.lastName}
         </Typography>
-        <Suggestion vaccines={this.state.vaccines} />
+        <Card style={{padding: 12, margin: 10}}>
+          <Suggestion profile={this.props.profile} vaccines={this.state.vaccines} />
+        </Card>
       </CardContent>
       <CardActions>
         <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
