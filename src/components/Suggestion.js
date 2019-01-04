@@ -15,21 +15,21 @@ class Suggestion extends Component {
     return neededVaccines
   }
 
-  neededVaccinesList = () => {
+  nextVaccine = () => {
     let neededVaccines = this.neededVaccines()
-    let neededVaccinesList = neededVaccines.map(vaccine => {
+    let nextVaccine = neededVaccines.map(vaccine => {
       return <li>{vaccine.name}</li>
     })
-    return neededVaccinesList
+    return <li>{nextVaccine[0]}</li>
   }
 
   render() {
 
     return(
       <div>
-        Upcoming vaccines and boosters!
+        Next vaccine needed:
         <br />
-        <ul>{this.neededVaccinesList()}</ul>
+        <ul>{this.nextVaccine()}</ul>
       </div>
     )
   }

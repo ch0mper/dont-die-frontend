@@ -68,7 +68,12 @@ class ProfileCard extends Component {
       }
     })
     .then(resp => resp.json())
-    .then(allVaccines => this.setState({allVaccines}))
+    .then(allVaccines => {
+    allVaccines.sort(function(a, b){
+      return a.age[0]-b.age[0]
+    })
+      this.setState({allVaccines})
+    })
   }
 
   addVaccine = () => {
