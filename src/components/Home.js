@@ -52,12 +52,11 @@ class Home extends Component {
   render() {
     return (
       <Paper style={{padding: 12}}>
-        < Navburger />
+        < Navburger logout={this.props.logout} />
         {this.state.profiles.length ?
           < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
           : < AddProfile createProfile={this.createProfile} />
         }
-        <Button onClick={this.props.logout} variant="contained">log out [move to 🍔]</Button>
       </Paper>
     )
   }

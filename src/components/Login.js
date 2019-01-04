@@ -3,12 +3,21 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 class Login extends Component {
   render() {
     return(
       <main>
       <CssBaseline />
+      <AppBar position="static">
+        <Toolbar>
+        <Typography component="title" variant="h3" color='inherit'>
+          don't die :)
+        </Typography>
+        </Toolbar>
+      </AppBar>
         <Paper style={{padding: 8, margin: 8}} >
           <form onSubmit={this.props.login} style={{padding: 8}} >
               <div className="form-group">
