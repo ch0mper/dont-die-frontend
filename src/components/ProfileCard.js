@@ -39,12 +39,6 @@ class ProfileCard extends Component {
   }
 
   fetchVaccines = () => {
-    // let vaccineIds = this.state.records.map( record => {
-    //   console.log('alan', record)
-    //   return record.vaccineId
-    // })
-
-    //let recordIds = this.state.records.map( record => record._id)
     let vaccines = this.state.records.map( record => {
       fetch(`http://localhost:5000/api/vaccines/${record.vaccineId}/`, {
         headers: {
@@ -53,11 +47,11 @@ class ProfileCard extends Component {
       })
       .then(resp => resp.json())
       .then(vaccine => {
-        //console.log('record', record)
         vaccine.recordId = record._id
         this.setState({
           vaccines: [...this.state.vaccines, vaccine]
-        })})
+        })
+      })
     })
   }
 
@@ -82,13 +76,29 @@ class ProfileCard extends Component {
     console.log('add vaccine clicked')
   }
 
-  deleteVaccine = () => {
-    // delete to /records/:id
-    console.log('delete vaccine clicked')
+  deleteVaccine = (recordId) => {
+    fetch(`http://localhost:5000/api/records/${recordId}/`, {
+      method:'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type':'application/json',
+        Accept: 'application/json'
+      }
+    })
+    // .then(resp => resp.json())
+    //
+    // .then((deletedRecord) => {
+    //   let filteredRecords = this.state.records.filter(record => record._id !== deletedRecord._id)
+    //   console.log('array of old records', this.state.records)
+    //   console.log('filtered', filteredRecords)
+    //   console.log('record id to delete', deletedRecord, deletedRecord._id)
+    //   this.setState({ records: filteredRecords })
+    // })
+
+    //.then(() => console.log('THIS SHOULD MATCH FILTERED', this.state.records))
   }
 
   render() {
-    console.log('DOES THIS HAVE RECORDIDS - YES IT DOES', this.state.vaccines)
     return(
       <div>
       <CardContent>
@@ -107,9 +117,8 @@ class ProfileCard extends Component {
           TODO: Edit (profile)
         </Button>
       </CardActions>
-        { this.state.showRecords ?
+        { this.state.showRecords &&
           <Record addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines}/>
-          : null
         }
       </div>
     )
