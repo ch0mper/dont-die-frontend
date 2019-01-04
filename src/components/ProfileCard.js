@@ -14,7 +14,8 @@ class ProfileCard extends Component {
     showRecords: false,
     viewButton: true,
     records: [], // done
-    vaccines: [] // done
+    vaccines: [], // done
+    allVaccines: []
   }
 
   showRecords = () => {
@@ -23,6 +24,7 @@ class ProfileCard extends Component {
 
   componentDidMount() {
     this.fetchRecords()
+    .then(this.fetchAllVaccines)
     .then(this.fetchVaccines)
   }
 
@@ -59,6 +61,16 @@ class ProfileCard extends Component {
     })
   }
 
+  fetchAllVaccines = () => {
+    return fetch(`http://localhost:5000/api/vaccines/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(allVaccines => this.setState({allVaccines}))
+  }
+
   addVaccine = () => {
     // post to /records
     // appends to vaccines like in fetchVaccines
@@ -79,7 +91,7 @@ class ProfileCard extends Component {
           {this.props.profile.firstName} {this.props.profile.lastName}
         </Typography>
         <Card style={{padding: 12, margin: 10}}>
-          <Suggestion profile={this.props.profile} vaccines={this.state.vaccines} />
+          <Suggestion allVaccines={this.state.allVaccines} profile={this.props.profile} vaccines={this.state.vaccines} />
         </Card>
       </CardContent>
       <CardActions>

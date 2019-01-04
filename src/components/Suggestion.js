@@ -4,53 +4,32 @@ import Typography from '@material-ui/core/Typography';
 
 class Suggestion extends Component {
 
-  state = {
-    vaccineIds: [],
-    allVaccines: [],
-    neededVaccines: []
-   }
-
-  componentDidMount(){
-    this.getVaccineIds()
-    this.fetchAllVaccines()
-  }
-
-  // fetchAllVaccines = () => {
-  //   return fetch(`http://localhost:5000/api/vaccines/`, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem('token')}`
-  //     }
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(allVaccines => this.setState({allVaccines}))
-  // }
-
   getVaccineIds = () => {
     let vaccineIds = this.props.vaccines.map(vaccine => vaccine._id)
-    console.log("vaccines?????", this.props.vaccines)
-    console.log("vaccine ids?????", vaccineIds)
-    this.setState({vaccineIds})
+    return vaccineIds
   }
 
   neededVaccines = () => {
-    let neededVaccines = this.state.allVaccines.map(
-      vaccine => {
-      if(!this.state.vaccineIds.includes(vaccine._id)){
-        return vaccine
-      }
+    let vaccineIds = this.getVaccineIds()
+    let neededVaccines = this.props.allVaccines.filter( vaccine => !vaccineIds.includes(vaccine._id))
+    return neededVaccines
+  }
+
+  neededVaccinesList = () => {
+    let neededVaccines = this.neededVaccines()
+    let neededVaccinesList = neededVaccines.map(vaccine => {
+      return <li>{vaccine.name}</li>
     })
-    this.setState({neededVaccines})
+    return neededVaccinesList
   }
 
   render() {
-    // console.log("prof vaccs", this.props.vaccines)
-    // console.log("all vaccs", this.state.allVaccines)
-    // console.log("vaccine ids", this.state.vaccineIds)
-    // console.log("needed vaccs", this.state.neededVaccines)
 
     return(
       <div>
         Upcoming vaccines and boosters!
+        <br />
+        <ul>{this.neededVaccinesList()}</ul>
       </div>
     )
   }
