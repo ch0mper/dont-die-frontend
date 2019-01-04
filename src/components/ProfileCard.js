@@ -76,10 +76,25 @@ class ProfileCard extends Component {
     })
   }
 
-  addVaccine = () => {
-    // post to /records
-    // appends to vaccines like in fetchVaccines
-
+  addVaccine = (e) => {
+    fetch(`http://localhost:5000/api/records/`, {
+      method:'POST',
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        vaccineId: e.target.vaccine.value,
+        profileId: this.props.profile._id
+      })
+    })
+    .then( res => res.json() )
+    .then(record => this.setState({
+      records: [...this.state.records, record]
+    }))
+    .then(() => console.log(this.state.records, "records"))
+    // .then(this.fetchVaccines)
     console.log('add vaccine clicked')
   }
 
@@ -89,7 +104,6 @@ class ProfileCard extends Component {
   }
 
   render() {
-    console.log('DOES THIS HAVE RECORDIDS - YES IT DOES', this.state.vaccines)
     return(
       <div>
       <CardContent>
