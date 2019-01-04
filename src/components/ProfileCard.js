@@ -64,7 +64,7 @@ class ProfileCard extends Component {
     .then(resp => resp.json())
     .then(allVaccines => {
     allVaccines.sort(function(a, b){
-      return a.age[0]-b.age[0]
+      return a.age-b.age //CHANGE TO A.AGE AND B.AGE WHEN BARBIE DOES SEEDS
     })
       this.setState({allVaccines})
     })
@@ -73,6 +73,7 @@ class ProfileCard extends Component {
   addVaccine = () => {
     // post to /records
     // appends to vaccines like in fetchVaccines
+
     console.log('add vaccine clicked')
   }
 
@@ -118,7 +119,7 @@ class ProfileCard extends Component {
         </Button>
       </CardActions>
         { this.state.showRecords &&
-          <Record addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines}/>
+          <Record allVaccines={this.state.allVaccines} addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines}/>
         }
       </div>
     )
