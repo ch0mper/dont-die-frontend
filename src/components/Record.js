@@ -8,16 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 
 class Record extends Component {
 
-  addVaccine = () => {
-    // post to /records
-    console.log('add vaccine clicked')
-  }
-
-  deleteVaccine = () => {
-    // delete to /records/:id
-    console.log('delete vaccine clicked')
-  }
-
   render() {
     return(
       <div>
@@ -28,13 +18,13 @@ class Record extends Component {
 
           {this.props.vaccines.map( vaccine => (
             <Card style={{padding: 12, margin: 10}}>
-              <Vaccine vaccine={vaccine} deleteVaccine={this.deleteVaccine} />
+              <Vaccine vaccine={vaccine} deleteVaccine={this.props.deleteVaccine} />
             </Card>
           ))}
         </CardContent>
 
         <CardActions>
-          <Button onClick={this.addVaccine} size="small" variant="contained" color="primary" style={{margin: 20}}>
+          <Button onClick={this.props.addVaccine} size="small" variant="contained" color="primary" style={{margin: 20}}>
             Add Vaccine
           </Button>
         </CardActions>
