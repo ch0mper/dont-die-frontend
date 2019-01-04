@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 class Vaccine extends Component {
 
   handleClick = recordId => {
+    console.log('in vaccine.js', recordId)
     this.props.deleteVaccine(recordId)
   }
 

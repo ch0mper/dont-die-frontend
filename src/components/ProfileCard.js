@@ -101,17 +101,13 @@ class ProfileCard extends Component {
         Accept: 'application/json'
       }
     })
-    // .then(resp => resp.json())
-    //
-    // .then((deletedRecord) => {
-    //   let filteredRecords = this.state.records.filter(record => record._id !== deletedRecord._id)
-    //   console.log('array of old records', this.state.records)
-    //   console.log('filtered', filteredRecords)
-    //   console.log('record id to delete', deletedRecord, deletedRecord._id)
-    //   this.setState({ records: filteredRecords })
-    // })
+    .then(resp => resp.json())
 
-    //.then(() => console.log('THIS SHOULD MATCH FILTERED', this.state.records))
+    .then((deletedRecord) => {
+      let filteredRecords = this.state.records.filter(record => record._id !== deletedRecord._id)
+      let filteredVaccines = this.state.vaccines.filter(vaccine => vaccine._id !== deletedRecord.vaccineId)
+      this.setState({ records: filteredRecords, vaccines: filteredVaccines })
+    })
   }
 
   render() {
@@ -134,7 +130,7 @@ class ProfileCard extends Component {
         </Button>
       </CardActions>
         { this.state.showRecords &&
-          <Record allVaccines={this.state.allVaccines} addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines}/>
+          <Record allVaccines={this.state.allVaccines} addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines} />
         }
       </div>
     )
