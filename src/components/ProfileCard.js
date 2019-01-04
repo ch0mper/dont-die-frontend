@@ -35,22 +35,41 @@ class ProfileCard extends Component {
   }
 
   fetchVaccines = () => {
-    let vaccineIds = this.state.records.map( record => record.vaccineId )
-    let vaccines = vaccineIds.map( vaccineId => {
-      fetch(`http://localhost:5000/api/vaccines/${vaccineId}/`, {
+    // let vaccineIds = this.state.records.map( record => {
+    //   console.log('alan', record)
+    //   return record.vaccineId
+    // })
+
+    //let recordIds = this.state.records.map( record => record._id)
+    let vaccines = this.state.records.map( record => {
+      fetch(`http://localhost:5000/api/vaccines/${record.vaccineId}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
       .then(resp => resp.json())
-      // append the vaccine onto this.state.vaccines
-      .then(vaccine => this.setState({
-        vaccines: [...this.state.vaccines, vaccine]
-      }))
+      .then(vaccine => {
+        //console.log('record', record)
+        vaccine.recordId = record._id
+        this.setState({
+          vaccines: [...this.state.vaccines, vaccine]
+        })})
     })
   }
 
+  addVaccine = () => {
+    // post to /records
+    // appends to vaccines like in fetchVaccines
+    console.log('add vaccine clicked')
+  }
+
+  deleteVaccine = () => {
+    // delete to /records/:id
+    console.log('delete vaccine clicked')
+  }
+
   render() {
+    console.log('DOES THIS HAVE RECORDIDS - YES IT DOES', this.state.vaccines)
     return(
       <div>
       <CardContent>
@@ -68,7 +87,7 @@ class ProfileCard extends Component {
         </Button>
       </CardActions>
         { this.state.showRecords ?
-          <Record profileId={this.props.profile._id} records={this.state.records} vaccines={this.state.vaccines}/>
+          <Record addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines}/>
           : null
         }
       </div>
