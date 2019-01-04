@@ -61,9 +61,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Typography component="title" variant="h3">
-          don't die :)
-        </Typography>
 
         {localStorage.token ?
           < Home userId={this.state.currentUserId} logout={this.logout} />

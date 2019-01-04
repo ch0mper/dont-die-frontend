@@ -124,9 +124,6 @@ class ProfileCard extends Component {
         <Button onClick={this.showRecords} size="small" color="primary" variant="contained">
           {this.state.viewButton ? 'View' : 'Hide'}
         </Button>
-        <Button size="small" color="primary" variant="contained">
-          TODO: Edit (profile)
-        </Button>
       </CardActions>
         { this.state.showRecords &&
           <Record allVaccines={this.state.allVaccines} addVaccine={this.addVaccine} deleteVaccine={this.deleteVaccine} vaccines={this.state.vaccines} />
