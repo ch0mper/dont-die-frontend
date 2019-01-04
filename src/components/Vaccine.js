@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 
 class Vaccine extends Component {
 
-  handleClick = id => {
-    this.props.deleteVaccine(id)
+  handleClick = recordId => {
+    this.props.deleteVaccine(recordId)
   }
 
   render() {
@@ -23,7 +23,7 @@ class Vaccine extends Component {
       </CardContent>
 
       <CardActions>
-        <Button onClick={this.handleClick} size="small" variant="contained">
+        <Button onClick={(id) => {this.handleClick(this.props.vaccine.recordId)}} size="small" variant="contained">
           Delete
         </Button>
       </CardActions>
