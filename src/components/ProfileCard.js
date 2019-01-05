@@ -102,7 +102,7 @@ class ProfileCard extends Component {
     })
     .then(resp => resp.json())
 
-    .then((deletedRecord) => {
+    .then( deletedRecord => {
       let filteredRecords = this.state.records.filter(record => record._id !== deletedRecord._id)
       let filteredVaccines = this.state.vaccines.filter(vaccine => vaccine._id !== deletedRecord.vaccineId)
       this.setState({ records: filteredRecords, vaccines: filteredVaccines })
