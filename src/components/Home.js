@@ -51,13 +51,15 @@ class Home extends Component {
 
   render() {
     return (
-      <Paper style={{padding: 12}}>
+      <>
         < Navburger logout={this.props.logout} />
-        {this.state.profiles.length ?
-          < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
-          : < AddProfile createProfile={this.createProfile} />
-        }
-      </Paper>
+        <Paper style={{padding: 12, margin: 12 }}>
+          {this.state.profiles.length ?
+            < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
+            : < AddProfile createProfile={this.createProfile} />
+          }
+        </Paper>
+      </>
     )
   }
 }
