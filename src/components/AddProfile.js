@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import Button from '@material-ui/core/Button';
 
 // show form for creating profile and add records
@@ -38,7 +36,7 @@ class AddProfile extends Component {
                   <label style={{padding: 10}} for="gender3">Other</label>
                 </div>
             </div>
-            <Button type="submit" variant="contained">add profile</Button>
+            <Button color="primary" type="submit" variant="contained">add profile</Button>
         </form>
       </div>
     )

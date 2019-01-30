@@ -14,7 +14,7 @@ const Navburger = (props) => {
             <Typography style={{ flexGrow: 1 }} component="title" variant="h3" color='inherit'>
               don't die :)
             </Typography>
-                <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Add Profile</Button>
+                <Button onClick={props.addProfile} color="inherit" variant="outlined" size="small" style={{margin: 5}}>Add Profile</Button>
                 <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Delete Profile</Button>
                 <Button onClick={props.logout} color="inherit" variant="outlined" size="small" style={{margin: 5}}>Logout</Button>
             </Toolbar>
