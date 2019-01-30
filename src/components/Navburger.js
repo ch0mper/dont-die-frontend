@@ -11,12 +11,12 @@ const Navburger = (props) => {
         <div>
         <AppBar position="static">
             <Toolbar>
-            <Typography component="title" variant="h3" color='inherit'>
+            <Typography style={{ flexGrow: 1 }} component="title" variant="h3" color='inherit'>
               don't die :)
             </Typography>
-              <Button variant="contained" size="small" style={{margin: 5}}>Add Profile</Button>
-              <Button variant="contained" size="small" style={{margin: 5}}>Delete Profile</Button>
-              <Button onClick={props.logout} variant="contained" size="small" style={{margin: 5}}>Logout</Button>
+                <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Add Profile</Button>
+                <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Delete Profile</Button>
+                <Button onClick={props.logout} color="inherit" variant="outlined" size="small" style={{margin: 5}}>Logout</Button>
             </Toolbar>
         </AppBar>
         </div>

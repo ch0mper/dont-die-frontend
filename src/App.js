@@ -60,8 +60,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-
+      <div >
         {localStorage.token ?
           < Home userId={this.state.currentUserId} logout={this.logout} />
           : < Login login={this.login} signup={this.signup}/>
