@@ -8,7 +8,18 @@ import Paper from '@material-ui/core/Paper';
 
 class Home extends Component {
   state = {
-    profiles: []
+    profiles: [],
+    addProfile: false
+  }
+
+  renderAddProfile = () => {
+    if(this.state.addProfile){
+      return < AddProfile createProfile={this.createProfile} changeAddProfileState={this.changeAddProfileState} />
+    }
+  }
+
+  changeAddProfileState = () => {
+    this.setState({addProfile: true})
   }
 
   componentDidMount() {
@@ -47,13 +58,15 @@ class Home extends Component {
     .then(profile => this.setState({
       profiles: [...this.state.profiles, profile]
     }))
+    .then(()=>this.setState({addProfile: false}))
   }
 
   render() {
     return (
       <>
-        < Navburger logout={this.props.logout} />
+        <Navburger logout={this.props.logout} addProfile={this.changeAddProfileState}/>
         <Paper style={{padding: 12, margin: 12 }}>
+          {this.renderAddProfile()}
           {this.state.profiles.length ?
             < ProfileCollection profiles={this.state.profiles} userId={this.props.userId} />
             : < AddProfile createProfile={this.createProfile} />
