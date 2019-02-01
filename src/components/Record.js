@@ -56,7 +56,7 @@ class Record extends Component {
           </Button>
         </CardActions>
         { this.state.showVaccines &&
-          <AddVaccines neededVaccines={this.state.neededVaccines} allVaccines={this.props.allVaccines} addVaccine={this.props.addVaccine} deleteVaccine={this.props.deleteVaccine} vaccines={this.props.vaccines}/>
+          <AddVaccines neededVaccines={this.state.neededVaccines} allVaccines={this.props.allVaccines} addVaccine={this.props.addVaccine} vaccines={this.props.vaccines}/>
         }
       </div>
     )

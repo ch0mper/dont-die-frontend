@@ -15,7 +15,7 @@ const Navburger = (props) => {
               don't die :)
             </Typography>
                 <Button onClick={props.addProfile} color="inherit" variant="outlined" size="small" style={{margin: 5}}>Add Profile</Button>
-                <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Delete Profile</Button>
+                {/* <Button color="inherit" variant="outlined" size="small" style={{margin: 5}}>Delete Profile</Button> */}
                 <Button onClick={props.logout} color="inherit" variant="outlined" size="small" style={{margin: 5}}>Logout</Button>
             </Toolbar>
         </AppBar>
