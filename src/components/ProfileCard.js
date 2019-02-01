@@ -13,8 +13,8 @@ class ProfileCard extends Component {
   state = {
     showRecords: false,
     viewButton: true,
-    records: [], // done
-    vaccines: [], // done
+    records: [],
+    vaccines: [],
     allVaccines: []
   }
 
